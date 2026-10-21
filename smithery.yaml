@@ -1,6 +1,6 @@
 name: epublys
 description: Free EPUB/PDF manipulation tools — merge, split, compress, convert, read/edit metadata, validate
-icon: https://epublys.com/favicon.ico
+icon: https://epublys.com/favicon.svg
 sourceUrl: https://github.com/Takyon236/epublys-mcp
 homepage: https://epublys.com
 
@@ -8,15 +8,16 @@ startCommand:
   type: http
   configSchema:
     type: object
-    required:
-      - apiKey
     properties:
       apiKey:
         type: string
         title: API Key
         description: >-
-          Epublys API key (starts with epl_). Get a free key at
-          https://epublys.com/account
+          Optional Epublys API key (starts with epl_). Without it the free tier
+          runs per IP address. A key from https://epublys.com/account carries
+          your account allowance and is required for Pro.
+        x-from:
+          header: x-api-key
   exampleConfig:
     apiKey: "epl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   url: https://epublys.com/mcp

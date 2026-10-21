@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.epublys/epublys",
   "title": "Epublys",
-  "description": "EPUB/PDF tools: merge, split, compress, convert, edit metadata, validate ebooks.",
-  "version": "1.0.1",
+  "description": "EPUB/PDF tools: merge, split, compress, convert, edit metadata, validate ebooks. No key needed for the free tier.",
+  "version": "1.1.0",
   "websiteUrl": "https://epublys.com",
   "repository": {
     "url": "https://github.com/Takyon236/epublys-mcp",
@@ -14,7 +14,19 @@
       "type": "streamable-http",
       "url": "https://epublys.com/mcp",
       "headers": [
-        { "name": "Authorization", "value": "Bearer <YOUR_API_KEY>" }
+        {
+          "name": "Authorization",
+          "value": "Bearer {api_key}",
+          "isRequired": false,
+          "description": "Optional Epublys API key. Without it the free tier runs per IP address; a key from https://epublys.com/account carries your account allowance and Pro.",
+          "variables": {
+            "api_key": {
+              "description": "Optional Epublys API key (starts with epl_). Without it the free tier runs per IP address; a key from https://epublys.com/account carries your account allowance and Pro.",
+              "isRequired": false,
+              "isSecret": true
+            }
+          }
+        }
       ]
     }
   ]
